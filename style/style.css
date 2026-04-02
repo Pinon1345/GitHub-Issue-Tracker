@@ -3,7 +3,14 @@
 }
 
 
-.btn-primary {
-    background-color: #4A00FF;
+.btn-primary{
+    background-color: #4A00FF ;
     color: white;
+    border: none;
+    width: 125px;
+}
+
+.btn-outline{
+    color: grey;
+    border-color: gainsboro;
 }

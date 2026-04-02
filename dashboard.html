@@ -35,13 +35,148 @@
 
 <body>
 
-    <main class="w-11/12 mx-auto space-y-5">
+    <main class=" w-100% mx-auto">
+
+        <!-- Navigation Bar -->
 
         <section>
 
-            <!-- Dashboard Page -->
+            <div class="navbar bg-base-100 shadow-sm mx-auto sm:gap-2 items-center">
+                <div class="flex-1 pl-3">
+                    <div class="navLeft flex justify-start gap-3 items-center md:col-span-1">
+                        <img class="w-[40px]" src="./assets/github-logo.png" alt="">
+                        <h2 class="text-xl font-bold">GitHub Issues Tracker</h2>
 
-            <h1 class="">Hello Everyone</h1>
+                    </div>
+                </div>
+                <div class="flex pr-3">
+
+                    <div class="join gap-1">
+                        <div>
+                            <label class="input validator join-item w-full max-w-lg mx-auto">
+                                <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                    stroke="currentColor">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </g>
+                                <div class="">
+                                    <i class="fa-brands fa-sistrix"></i>
+                                    <input type="text" placeholder="Search issues..." required />
+                                </div>
+                            </label>
+                            <div class="validator-hint hidden">Enter Valid Search Items</div>
+                        </div>
+                        <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md"><i class="fa-solid fa-plus"></i> New Issue</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+
+        <!-- Tabs section -->
+
+        <section class="w-11/12 space-y-5 mx-auto bg-[#f8fafc] p-3 mt-8 mb-3 rounded-[5px] shadow-sm">
+            <div class="flex gap-3">
+                <button class="btn btn-primary">All</button>
+                <button class="btn btn-outline">Open</button>
+                <button class="btn btn-outline">Closed</button>
+            </div>
+        </section>
+
+        <!-- Cards section -->
+
+        <section class="w-11/12 space-y-5 mx-auto shadow-lg mb-10">
+
+            <!-- count display -->
+
+            <div
+                class="bg-[#f8fafc9a] p-5 mt-6 rounded-[5px] shadow-sm border-b-2 border-white flex justify-between items-center">
+
+                <div class="left-count-div flex gap-3 items-center justify-between">
+                    <img class="w-8 h-8" src="./assets/Aperture.png" alt="">
+                    <div>
+                        <h2 class="font-bold text-xl">50 Issues</h2>
+                        <p class="text-gray-500">Track and manage your project issues</p>
+                    </div>
+
+
+                </div>
+
+                <div class="right-show-div flex justify-between gap-4 items-center">
+                    <div class="flex justify-between gap-2 items-center">
+                        <img src="./assets/Ellipse 2.png" alt="">
+                        <p class="font-medium">Open</p>
+                    </div>
+                    <div class="flex justify-between gap-2 items-center">
+                        <img src="./assets/Ellipse 3.png" alt="">
+                        <p class="font-medium">Closed</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- cards section -->
+
+            <div class="bg-[#f8fafc9f] p-5 mt-5 rounded-[5px] mb-10">
+
+                <!-- Issues container -->
+
+                <div id="issuesContainer" class="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-5">
+
+                    <!-- Card style -->
+                     <!-- Dynamically added here -->
+
+                    <!-- <div class="card bg-base-100 shadow-md">
+                        <figure>
+                            <div class="flex justify-between gap-36 items-center pt-4">
+                                <img src="./assets/Open-Status.png" alt="">
+                                <div class="badge badge-soft badge-secondary font-semibold">High</div>
+
+                            </div>
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="text-xl font-bold">Fix navigation menu on mobile devices</h2>
+                            <p class="text-gray-500 line-clamp-3 pb-2">The navigation menu doesn't collapse properly on mobile devices...
+                            </p>
+
+                            <div class="card-actions justify-start gap-4">
+                                <div class="badge badge-soft bg-red-100 badge-secondary flex items-center gap-1">
+
+                                    <img class="w-2 h-[10px]" src="./assets/Vector-1.png" alt="" class="w-4 h-4">
+
+                                    <span class="font-semibold">BUG</span>
+
+                                </div>
+
+                                <div class="badge badge-soft bg-yellow-100 badge-warning flex items-center gap-1">
+
+                                    <img class="w-2 h-[10px]" src="./assets/Vector-2.png" alt="" class="w-4 h-4">
+
+                                    <span class="font-semibold">HELP WANTED</span>
+
+                                </div>
+                            </div>
+
+                            <div class="text-gray-400 border-t-1 mt-3 pt-4">
+                                <p>#1 by john_doe</p>
+                                <p>1/15/2024</p>
+                            </div>
+
+
+
+                        </div>
+                    </div> -->
+
+                </div>
+
+                <!-- Loading spinner -->
+
+                <span class="loading loading-spinner loading-xl"></span>
+
+            </div>
+
 
         </section>
 
