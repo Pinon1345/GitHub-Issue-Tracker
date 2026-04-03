@@ -57,9 +57,20 @@ async function loadIssues() {
 
 }
 
-// tab function
+// tab function and adding active class
 
-function handleTab(type) {
+function handleTab(btn, type) {
+
+    // Remove all active class
+
+    document.querySelectorAll (".tab-button").forEach (b => {
+        b.classList.remove ("btn-primary");
+        b.classList.add ("btn-outline");
+    })
+
+    
+
+    // filtered and rendering issues
 
     let filtered = [];
 
@@ -74,7 +85,14 @@ function handleTab(type) {
     }
 
     displayIssues(filtered);
+
+    // Active button
+
+    btn.classList.remove ("btn-outline");
+    btn.classList.add ("btn-primary");
 }
+
+// Display issue
 
 
 function displayIssues(issues) {
@@ -147,59 +165,7 @@ function displayIssues(issues) {
 
     // console.log(issues);
 
-    // issues.forEach(issue => {
-    //     console.log(issue);
-    //     const card = document.createElement("div");
-    //     // card.className = "card bg-base-100 shadow-md";
-    //     card.innerHTML = `
-    //        <div class="card bg-base-100 shadow-md">
-    //                     <figure>
-    //                         <div class="flex justify-between gap-36 items-center pt-4">
-    //                             <img src="./assets/Open-Status.png" alt="">
-    //                             <div class="badge badge-soft badge-secondary font-semibold">${issue.priority.toUpperCase()}</div>
-
-    //                         </div>
-    //                     </figure>
-    //                     <div class="card-body">
-    //                         <h2 class="text-xl font-bold">${issue.title}</h2>
-    //                         <p class="text-gray-500 pb-2">${issue.description}
-    //                         </p>
-
-    //                         <div class="card-actions justify-start gap-4">
-    //                             <div class="badge badge-soft bg-red-100 badge-secondary flex items-center gap-1">
-
-    //                                 <img class="w-2 h-[10px]" src="./assets/Vector-1.png" alt="" class="w-4 h-4">
-
-    //                                 <span class="font-semibold">BUG</span>
-
-    //                             </div>
-
-    //                             <div class="badge badge-soft bg-yellow-100 badge-warning flex items-center gap-1">
-
-    //                                 <img class="w-2 h-[10px]" src="./assets/Vector-2.png" alt="" class="w-4 h-4">
-
-    //                                 <span class="font-semibold">HELP WANTED</span>
-
-    //                             </div>
-    //                         </div>
-
-    //                         <div class="text-gray-400 border-t-1 mt-3 pt-4">
-    //                             <p>${issue.author}</p>
-    //                             <p>1/15/2024</p>
-    //                         </div>
-
-
-
-    //                     </div>
-    //                 </div> 
-
-    //         `
-
-
-    //     issuesContainer.appendChild(card);
-
-    // });
-
+    
 }
 
 
