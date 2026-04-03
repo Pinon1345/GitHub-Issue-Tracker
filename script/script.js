@@ -8,7 +8,7 @@ function signIn() {
 
     if (username === "admin" & password === "admin123") {
         alert("Congratulation! Your Sign In is Successful.");
-        window.location.href = "../dashboard.html"
+        window.location.href = "./dashboard.html"
 
     }
     else {
