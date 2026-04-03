@@ -21,6 +21,11 @@ function signIn() {
 const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const count = document.getElementById("issueCount");
+const issueDetailsModal = document.getElementById ("issue_details_modal");
+const modalTitle = document.getElementById ("modalTitle");
+const modalDescription = document.getElementById ("modalDescription");
+const modalStatus = document.getElementById ("modalStatus");
+const modalPriority = document.getElementById ("modalPriority");
 
 let allIssues = [];
 
@@ -112,10 +117,10 @@ function displayIssues(issues) {
 
         const card = document.createElement("div");
 
-        card.className = `border-t-4 ${borderColor} rounded-xl overflow-hidden`;
+        card.className = `border-t-4 ${borderColor} rounded-xl`;
 
         card.innerHTML = `
-           <div class="card bg-base-100 shadow-md">
+           <div class="card bg-base-100 shadow-md" onclick="openIssueModal(${issue.id})">
                         <figure>
                             <div class="flex justify-between gap-36 items-center pt-4">
                                 <img src="${icon}" alt="">
@@ -166,6 +171,21 @@ function displayIssues(issues) {
     // console.log(issues);
 
     
+}
+
+async function openIssueModal (issueId) {
+    console.log(issueId)
+    const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${issueId}`)
+    const data = await response.json()
+    const issueDetails = data.data
+    console.log(issueDetails, "data")
+    issueDetailsModal.showModal();
+
+    modalTitle.innerHTML = issueDetails.title;
+    modalDescription.innerHTML = issueDetails.description;
+    modalStatus.innerHTML = issueDetails.status;
+    modalPriority.innerHTML = issueDetails.priority.toUpperCase();
+
 }
 
 
