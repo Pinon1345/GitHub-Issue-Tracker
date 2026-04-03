@@ -75,12 +75,6 @@ function hideLoading() {
     loadingSpinner.classList.add("hidden");
 }
 
-// async function issueStatus(btn) {
-//     console.log(btn);
-// }
-
-
-
 
 
 
@@ -155,7 +149,7 @@ function displayIssues(issues) {
         card.innerHTML = `
            <div class="card bg-base-100 shadow-md hover:bg-blue-50 cursor-pointer" onclick="openIssueModal(${issue.id})">
                         <figure>
-                            <div class="flex justify-between gap-36 items-center pt-4">
+                            <div class="flex justify-between gap-40 items-center pt-4">
                                 <img src="${icon}" alt="">
                                 <div class="badge badge-soft badge-secondary font-semibold">${issue.priority.toUpperCase()}</div>
 
