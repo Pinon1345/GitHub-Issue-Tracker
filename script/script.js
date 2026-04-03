@@ -19,16 +19,64 @@ function signIn() {
 // Dashboard Part //
 
 const issuesContainer = document.getElementById("issuesContainer");
+const loadingSpinner = document.getElementById("loadingSpinner");
+const count = document.getElementById("issueCount");
+
+
+
+
+
+
+
+function showLoading() {
+    loadingSpinner.classList.remove("hidden");
+    issuesContainer.innerHTML = "";
+}
+
+function hideLoading() {
+    loadingSpinner.classList.add("hidden");
+}
+
+// async function issueStatus(btn) {
+//     console.log(btn);
+// }
+
+function handleTab(type) {
+    let filtered = [];
+
+    if (type === "all") {
+        filtered = "allIssues";
+    }
+
+    else if (type === "open") {
+        filtered = allIssues.filter(issue => issue.status === "open");
+    }
+
+    else if (type === "closed") {
+        filtered = allIssues.filter(issue => issue.status === "closed");
+    }
+
+    displayIssues(filtered);
+}
+
+
+
+
+
+
 
 
 async function loadIssues() {
+    showLoading();
     const response = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await response.json();
+    hideLoading();
     displayIssues(data.data);
 
 }
 
 function displayIssues(issues) {
+
     // console.log(issues);
     issues.forEach(issue => {
         console.log(issue);
@@ -78,7 +126,8 @@ function displayIssues(issues) {
             
             `
 
-          issuesContainer.appendChild(card);  
+
+        issuesContainer.appendChild(card);
 
     });
 
