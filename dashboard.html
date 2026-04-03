@@ -61,19 +61,19 @@
                                 </g>
                                 <div class="">
                                     <i class="fa-brands fa-sistrix"></i>
-                                    <input type="text" placeholder="Search issues..." required />
+                                    <input id="searchInput" type="text" placeholder="Search issues..." required />
                                 </div>
                             </label>
                             <div class="validator-hint hidden">Enter Valid Search Items</div>
                         </div>
-                        <button class="btn btn-primary btn-xs sm:btn-sm md:btn-md"><i class="fa-solid fa-plus"></i> New
+
+                        <button id="searchButton" class="btn btn-primary btn-xs sm:btn-sm md:btn-md"><i class="fa-solid fa-plus"></i> New
                             Issue</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Dashboard Page -->
 
         <!-- Tabs section -->
 
@@ -192,8 +192,7 @@
 
         <div>
             <!-- Open the modal using ID.showModal() method -->
-            <button class="btn cursor-pointer" onclick="issue_details_modal.showModal()">open modal</button>
-
+    
             <dialog id="issue_details_modal" class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
                     <div class="space-y-6 mx-auto">
@@ -208,29 +207,30 @@
                                 <img class="w-1 h-1" src="./assets/Ellipse 6.png" alt="">
                                 <p class="text-gray-400"> 22/02/2026</p>
                             </div>
-
+    
                         </div>
                         <div>
                             <div class="card-actions justify-start gap-4">
                                 <div class="badge badge-soft bg-red-100 badge-secondary flex items-center gap-1">
-
+    
                                     <img class="w-2 h-[10px]" src="./assets/Vector-1.png" alt="" class="w-4 h-4">
-
+    
                                     <span class="font-semibold">BUG</span>
-
+    
                                 </div>
-
+    
                                 <div class="badge badge-soft bg-yellow-100 badge-warning flex items-center gap-1">
-
+    
                                     <img class="w-2 h-[10px]" src="./assets/Vector-2.png" alt="" class="w-4 h-4">
-
+    
                                     <span class="font-semibold">HELP WANTED</span>
-
+    
                                 </div>
                             </div>
-
+    
                         </div>
-                        <p id="modalDescription" class="text-gray-500">The navigation menu doesn't collapse properly on mobile devices. Need
+                        <p id="modalDescription" class="text-gray-500">The navigation menu doesn't collapse properly on
+                            mobile devices. Need
                             to fix the responsive
                             behavior.</p>
                         <div
@@ -242,9 +242,9 @@
                             <div class="col-span-1">
                                 <p class="text-gray-400">Priority:</p>
                                 <div id="modalPriority" class="badge badge-error text-white">Error</div>
-
+    
                             </div>
-
+    
                         </div>
                     </div>
                     <div class="modal-action">
@@ -256,6 +256,7 @@
                 </div>
             </dialog>
         </div>
+
 
     </main>
 

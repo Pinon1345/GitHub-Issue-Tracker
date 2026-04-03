@@ -26,8 +26,41 @@ const modalTitle = document.getElementById ("modalTitle");
 const modalDescription = document.getElementById ("modalDescription");
 const modalStatus = document.getElementById ("modalStatus");
 const modalPriority = document.getElementById ("modalPriority");
+const searchInput = document.getElementById ("searchInput");
+const searchButton = document.getElementById ("searchButton");
 
 let allIssues = [];
+
+
+// Search function
+
+async function searchIssue () {
+    const text = searchInput.value.trim ().toLowerCase(); 
+
+    // empty condition
+
+    if ( text === "") {
+        displayIssues (allIssues);
+        return;
+    }
+
+    // Filter
+
+    const filtered = allIssues.filter (issue => 
+        issue.title.toLowerCase().startsWith(text)
+    )
+
+    displayIssues (filtered);
+    
+}
+
+// Search button 
+
+searchButton.addEventListener ("click", searchIssue);
+
+// When press search button 
+
+searchInput.addEventListener ("input", searchIssue);
 
 
 
@@ -120,7 +153,7 @@ function displayIssues(issues) {
         card.className = `border-t-4 ${borderColor} rounded-xl`;
 
         card.innerHTML = `
-           <div class="card bg-base-100 shadow-md" onclick="openIssueModal(${issue.id})">
+           <div class="card bg-base-100 shadow-md hover:bg-blue-50 cursor-pointer" onclick="openIssueModal(${issue.id})">
                         <figure>
                             <div class="flex justify-between gap-36 items-center pt-4">
                                 <img src="${icon}" alt="">
@@ -179,12 +212,12 @@ async function openIssueModal (issueId) {
     const data = await response.json()
     const issueDetails = data.data
     console.log(issueDetails, "data")
-    issueDetailsModal.showModal();
-
+    
     modalTitle.innerHTML = issueDetails.title;
     modalDescription.innerHTML = issueDetails.description;
     modalStatus.innerHTML = issueDetails.status;
     modalPriority.innerHTML = issueDetails.priority.toUpperCase();
+    issueDetailsModal.showModal();
 
 }
 
