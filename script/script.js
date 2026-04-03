@@ -22,7 +22,7 @@ const issuesContainer = document.getElementById("issuesContainer");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const count = document.getElementById("issueCount");
 
-
+let allIssues = [];
 
 
 
@@ -41,25 +41,6 @@ function hideLoading() {
 //     console.log(btn);
 // }
 
-function handleTab(type) {
-    let filtered = [];
-
-    if (type === "all") {
-        filtered = "allIssues";
-    }
-
-    else if (type === "open") {
-        filtered = allIssues.filter(issue => issue.status === "open");
-    }
-
-    else if (type === "closed") {
-        filtered = allIssues.filter(issue => issue.status === "closed");
-    }
-
-    displayIssues(filtered);
-}
-
-
 
 
 
@@ -70,23 +51,56 @@ async function loadIssues() {
     showLoading();
     const response = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await response.json();
+    allIssues = data.data;
     hideLoading();
-    displayIssues(data.data);
+    displayIssues(allIssues);
 
 }
 
-function displayIssues(issues) {
+// tab function
 
-    // console.log(issues);
+function handleTab(type) {
+
+    let filtered = [];
+
+    if (type === "all") {
+        filtered = allIssues;
+    }
+    else if (type === "open") {
+        filtered = allIssues.filter(issue => issue.status === "open");
+    }
+    else if (type === "closed") {
+        filtered = allIssues.filter(issue => issue.status === "closed");
+    }
+
+    displayIssues(filtered);
+}
+
+
+function displayIssues(issues) {
+    issuesContainer.innerHTML = "";
+    count.innerText = `${issues.length} Issues`;
+
     issues.forEach(issue => {
-        console.log(issue);
+
+        const borderColor = issue.status === "open"
+            ? "border-green-300"
+            : "border-purple-300";
+            
+
+        const icon = issue.status === "open"
+        ? src="./assets/Open-Status.png"
+        : src="./assets/Closed- Status .png";
+
         const card = document.createElement("div");
-        // card.className = "card bg-base-100 shadow-md";
+
+        card.className = `border-t-4 ${borderColor} rounded-xl overflow-hidden`;
+
         card.innerHTML = `
            <div class="card bg-base-100 shadow-md">
                         <figure>
                             <div class="flex justify-between gap-36 items-center pt-4">
-                                <img src="./assets/Open-Status.png" alt="">
+                                <img src="${icon}" alt="">
                                 <div class="badge badge-soft badge-secondary font-semibold">${issue.priority.toUpperCase()}</div>
 
                             </div>
@@ -127,9 +141,64 @@ function displayIssues(issues) {
             `
 
 
-        issuesContainer.appendChild(card);
 
+        issuesContainer.appendChild(card);
     });
+
+    // console.log(issues);
+
+    // issues.forEach(issue => {
+    //     console.log(issue);
+    //     const card = document.createElement("div");
+    //     // card.className = "card bg-base-100 shadow-md";
+    //     card.innerHTML = `
+    //        <div class="card bg-base-100 shadow-md">
+    //                     <figure>
+    //                         <div class="flex justify-between gap-36 items-center pt-4">
+    //                             <img src="./assets/Open-Status.png" alt="">
+    //                             <div class="badge badge-soft badge-secondary font-semibold">${issue.priority.toUpperCase()}</div>
+
+    //                         </div>
+    //                     </figure>
+    //                     <div class="card-body">
+    //                         <h2 class="text-xl font-bold">${issue.title}</h2>
+    //                         <p class="text-gray-500 pb-2">${issue.description}
+    //                         </p>
+
+    //                         <div class="card-actions justify-start gap-4">
+    //                             <div class="badge badge-soft bg-red-100 badge-secondary flex items-center gap-1">
+
+    //                                 <img class="w-2 h-[10px]" src="./assets/Vector-1.png" alt="" class="w-4 h-4">
+
+    //                                 <span class="font-semibold">BUG</span>
+
+    //                             </div>
+
+    //                             <div class="badge badge-soft bg-yellow-100 badge-warning flex items-center gap-1">
+
+    //                                 <img class="w-2 h-[10px]" src="./assets/Vector-2.png" alt="" class="w-4 h-4">
+
+    //                                 <span class="font-semibold">HELP WANTED</span>
+
+    //                             </div>
+    //                         </div>
+
+    //                         <div class="text-gray-400 border-t-1 mt-3 pt-4">
+    //                             <p>${issue.author}</p>
+    //                             <p>1/15/2024</p>
+    //                         </div>
+
+
+
+    //                     </div>
+    //                 </div> 
+
+    //         `
+
+
+    //     issuesContainer.appendChild(card);
+
+    // });
 
 }
 
